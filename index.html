@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+           crossorigin=""/>
+
+         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+           crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [30, -75],
+              zoom: 4
+          });
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 4,
+               minZoom: 4
+            }).addTo(map);
+			var museumIcon = L.icon({
+    iconUrl: 'museum.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+var prehistoryIcon = L.icon({
+    iconUrl: 'prehistory.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+var tentIcon = L.icon({
+    iconUrl: 'tent.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+var marker1 = L.marker([41.3,-73.8], {icon: museumIcon}).addTo(map);
+var marker2 = L.marker([18.5,-66.3], {icon: prehistoryIcon}).addTo(map);
+var marker3 = L.marker([42,-87], {icon: tentIcon}).addTo(map);
+
+var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Metropolitan_Museum_of_Art_%28The_Met%29_-_Central_Park%2C_NYC.jpg" alt="The Metropolitan Museum of Art" width="250">';
+var pic2 = '<img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Taino_petroglyph_in_cave.jpg" alt="Cave Painting" width="250">';
+var pic3 = '<img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Tent_camping_along_the_Sulayr_trail_in_La_Taha%2C_Sierra_Nevada_National_Park_%28DSCF5147%29.jpg" alt="Tent in the Woods" width="250">';
+
+marker1.bindPopup('<p style="color:dimgray; font-weight:bold"> Visited the Metropolitan Museum of Art in New York City </p>' + pic1);
+marker2.bindPopup('<p style="color:chocolate; font-weight:bold"> Saw the Taino cave paintings of Puerto Rico</p>' + pic2);
+marker3.bindPopup('<p style="color:green; font-weight:bold"> Went camping in Portage Indiana</p>' + pic3);
+
+        </script>
+   </body>
+</html>
